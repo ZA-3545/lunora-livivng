@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lunora Living — Homepage Reference</title>
+<style>
+  :root{
+    --bg:#EFE9DE;
+    --bg-alt:#E5DED0;
+    --ink:#2B2420;
+    --ink-soft:#6B6055;
+    --rose:#C98F86;
+    --sage:#9CA88B;
+    --card:#FAF7F1;
+    --line:#DDD4C4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600; margin:0; letter-spacing:-0.01em;
+  }
+  .note{
+    background:#2B2420; color:#EFE9DE; font-family:'Inter',sans-serif;
+    font-size:13px; padding:10px 24px; text-align:center;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'Fraunces',serif; font-size:20px; letter-spacing:0.02em;}
+  .navlinks{display:flex; gap:28px; font-size:14px; color:var(--ink-soft);}
+  .navicons{display:flex; gap:18px; font-size:14px;}
+
+  /* HERO */
+  .hero{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px;
+    align-items:center; padding:72px 0 56px;
+  }
+  .hero-tag{font-size:13px; color:var(--rose); letter-spacing:0.04em; margin-bottom:14px;}
+  .hero h1{font-size:52px; line-height:1.08; max-width:520px;}
+  .hero p{color:var(--ink-soft); font-size:16px; max-width:420px; margin-top:18px;}
+  .btn{
+    display:inline-block; background:var(--ink); color:var(--bg);
+    padding:14px 28px; border-radius:2px; font-size:14px; text-decoration:none;
+    margin-top:26px;
+  }
+  .btn-outline{
+    display:inline-block; border:1px solid var(--ink); color:var(--ink);
+    padding:13px 27px; border-radius:2px; font-size:14px; text-decoration:none;
+    margin-top:26px; margin-left:12px;
+  }
+  .hero-art{
+    aspect-ratio:4/5; border-radius:4px; position:relative; overflow:hidden;
+    background:linear-gradient(160deg,#DCCFC0 0%, #C98F86 60%, #9CA88B 130%);
+  }
+  .hero-art::after{
+    content:"Lifestyle photo — warm, natural light,\A styled room corner (see Brand §1)";
+    white-space:pre; position:absolute; inset:0; display:flex; align-items:center;
+    justify-content:center; text-align:center; font-size:13px; color:#2B2420;
+    background:rgba(255,255,255,0.18); font-family:'Inter',sans-serif;
+  }
+
+  /* SECTION HEADERS */
+  .section{padding:56px 0; border-top:1px solid var(--line);}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px;}
+  .section-head h2{font-size:28px;}
+  .section-head a{font-size:13px; color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--ink-soft);}
+
+  /* SHOP BY MOOD */
+  .mood-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .mood-card{
+    aspect-ratio:3/4; border-radius:4px; display:flex; align-items:flex-end;
+    padding:18px; color:#2B2420; font-family:'Fraunces',serif; font-size:18px;
+  }
+  .mood-card span{background:rgba(250,247,241,0.75); padding:6px 10px; border-radius:2px;}
+  .m1{background:linear-gradient(150deg,#D9CBBA,#C98F86);}
+  .m2{background:linear-gradient(150deg,#D2D9C4,#9CA88B);}
+  .m3{background:linear-gradient(150deg,#E2D6C5,#B8A88F);}
+  .m4{background:linear-gradient(150deg,#D9C7C2,#C9A6A0);}
+
+  /* BUNDLES */
+  .bundle-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .bundle-card{background:var(--card); border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  .bundle-img{aspect-ratio:5/4; background:linear-gradient(140deg,#E5DBC9,#C98F86);}
+  .bundle-body{padding:18px;}
+  .bundle-body h3{font-size:17px; margin-bottom:6px;}
+  .bundle-body p{font-size:13px; color:var(--ink-soft); margin:0 0 10px;}
+  .price-row{display:flex; gap:8px; align-items:baseline; font-size:14px;}
+  .was{color:var(--ink-soft); text-decoration:line-through; font-size:12px;}
+  .now{color:var(--rose); font-weight:600;}
+
+  /* BEST SELLERS strip */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .p-card{background:var(--card); border:1px solid var(--line); border-radius:4px; padding:12px;}
+  .p-img{aspect-ratio:1/1; border-radius:3px; margin-bottom:10px;}
+  .p1{background:linear-gradient(145deg,#EADFC9,#C98F86);}
+  .p2{background:linear-gradient(145deg,#DCE2CE,#9CA88B);}
+  .p3{background:linear-gradient(145deg,#E8DACB,#B99A88);}
+  .p4{background:linear-gradient(145deg,#E3D5CC,#CBA79C);}
+  .p-card h4{font-size:13.5px; margin:0 0 4px; font-family:'Inter';font-weight:600;}
+  .p-card .now{font-size:13px;}
+
+  /* ROOM INSPO */
+  .inspo{display:grid; grid-template-columns:1.3fr 1fr; gap:16px;}
+  .inspo-main{aspect-ratio:16/11; border-radius:4px; background:linear-gradient(150deg,#DCCFC0,#9CA88B);}
+  .inspo-sub{display:grid; grid-template-rows:1fr 1fr; gap:16px;}
+  .inspo-a{border-radius:4px; background:linear-gradient(150deg,#E3D5CC,#C98F86);}
+  .inspo-b{border-radius:4px; background:linear-gradient(150deg,#D9CBBA,#B8A88F);}
+
+  /* REVIEWS */
+  .review-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .review{background:var(--card); border:1px solid var(--line); border-radius:4px; padding:20px;}
+  .review p{font-size:14px; color:var(--ink); margin:0 0 12px;}
+  .review .who{font-size:12.5px; color:var(--ink-soft);}
+
+  /* NEWSLETTER */
+  .news{
+    background:#2B2420; color:#EFE9DE; border-radius:6px; padding:48px;
+    display:flex; justify-content:space-between; align-items:center; gap:24px;
+  }
+  .news h2{color:#EFE9DE; font-size:26px; max-width:360px;}
+  .news p{color:#C9BFB0; font-size:14px; margin-top:8px;}
+  .news form{display:flex; gap:0; flex:0 0 340px;}
+  .news input{flex:1; border:none; padding:14px 16px; font-size:14px; border-radius:2px 0 0 2px;}
+  .news button{background:var(--rose); color:#2B2420; border:none; padding:14px 20px; font-size:14px; border-radius:0 2px 2px 0; font-weight:600;}
+
+  footer{border-top:1px solid var(--line); padding:40px 0 60px; font-size:13px; color:var(--ink-soft);}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:24px;}
+  .foot-grid h5{font-family:'Inter'; color:var(--ink); font-size:13px; margin:0 0 12px;}
+  .foot-grid a{display:block; color:var(--ink-soft); text-decoration:none; margin-bottom:8px;}
+
+  @media(max-width:800px){
+    .hero{grid-template-columns:1fr;}
+    .mood-grid,.bundle-grid,.product-grid{grid-template-columns:repeat(2,1fr);}
+    .inspo{grid-template-columns:1fr;}
+    .review-row{grid-template-columns:1fr;}
+    .news{flex-direction:column; align-items:flex-start;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="note">WIREFRAME REFERENCE — colors/type are the real brand tokens from §1; gradient blocks stand in for real product &amp; lifestyle photography</div>
+
+<div class="wrap">
+  <nav>
+    <div class="logo">lunora living</div>
+    <div class="navlinks">
+      <span>Shop</span><span>Bundles</span><span>Room Edits</span><span>Gifting</span><span>About</span>
+    </div>
+    <div class="navicons"><span>Search</span><span>Wishlist</span><span>Cart (0)</span></div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="hero-tag">MAKE YOUR SPACE FEEL LIKE YOU</div>
+      <h1>Small, affordable touches that make a room feel like yours.</h1>
+      <p>Curated bundles for the corner, desk, or bedroom you're finally ready to fix up — under PKR 3,000, delivered nationwide, Cash on Delivery available.</p>
+      <a class="btn">Shop the Edit</a>
+      <a class="btn-outline">Shop Bundles</a>
+    </div>
+    <div class="hero-art"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Shop by mood</h2>
+      <a href="#">View all rooms</a>
+    </div>
+    <div class="mood-grid">
+      <div class="mood-card m1"><span>Cozy Corner</span></div>
+      <div class="mood-card m2"><span>Study Desk</span></div>
+      <div class="mood-card m3"><span>Minimal Bedroom</span></div>
+      <div class="mood-card m4"><span>Gifting Edit</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Bundles</h2>
+      <a href="#">All bundles</a>
+    </div>
+    <div class="bundle-grid">
+      <div class="bundle-card">
+        <div class="bundle-img"></div>
+        <div class="bundle-body">
+          <h3>Cozy Room Bundle</h3>
+          <p>Fairy lights, poster, mini vase, artificial flowers, candle</p>
+          <div class="price-row"><span class="was">PKR 3,100</span><span class="now">PKR 2,499</span></div>
+        </div>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-img" style="background:linear-gradient(140deg,#DCE2CE,#9CA88B)"></div>
+        <div class="bundle-body">
+          <h3>Study Desk Bundle</h3>
+          <p>Desk organizer, mini plant, candle, frame, small lamp</p>
+          <div class="price-row"><span class="was">PKR 2,750</span><span class="now">PKR 2,199</span></div>
+        </div>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-img" style="background:linear-gradient(140deg,#E3D5CC,#B99A88)"></div>
+        <div class="bundle-body">
+          <h3>Minimal Room Bundle</h3>
+          <p>Two posters, vase, artificial plant, candle</p>
+          <div class="price-row"><span class="was">PKR 2,300</span><span class="now">PKR 1,899</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Best sellers</h2>
+      <a href="#">Shop all</a>
+    </div>
+    <div class="product-grid">
+      <div class="p-card"><div class="p-img p1"></div><h4>Warm Glow Fairy Lights</h4><div class="now">PKR 799</div></div>
+      <div class="p-card"><div class="p-img p2"></div><h4>Mini Terrazzo Vase</h4><div class="now">PKR 1,150</div></div>
+      <div class="p-card"><div class="p-img p3"></div><h4>Desk Organizer Set</h4><div class="now">PKR 1,450</div></div>
+      <div class="p-card"><div class="p-img p4"></div><h4>Vanilla Amber Candle</h4><div class="now">PKR 950</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>Room inspiration</h2></div>
+    <div class="inspo">
+      <div class="inspo-main"></div>
+      <div class="inspo-sub">
+        <div class="inspo-a"></div>
+        <div class="inspo-b"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>What customers say</h2></div>
+    <div class="review-row">
+      <div class="review"><p>"My hostel room finally feels like mine. The cozy bundle was worth every rupee."</p><div class="who">— Amna, Lahore</div></div>
+      <div class="review"><p>"Ordered COD, arrived in 3 days, packaging felt genuinely premium."</p><div class="who">— Zara, Karachi</div></div>
+      <div class="review"><p>"Bought the desk bundle for my sister's birthday — she loved it."</p><div class="who">— Hira, Islamabad</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="news">
+      <div>
+        <h2>Get 10% off your first order</h2>
+        <p>Join the list for new bundles, room edits, and restock alerts.</p>
+      </div>
+      <form>
+        <input type="email" placeholder="Your email or WhatsApp number">
+        <button>Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="logo">lunora living</div>
+        <p style="margin-top:10px; max-width:260px;">Make your space feel like you. Affordable, aesthetic home décor across Pakistan.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <a href="#">Bundles</a><a href="#">New Arrivals</a><a href="#">Best Sellers</a><a href="#">Gifting</a>
+      </div>
+      <div>
+        <h5>Help</h5>
+        <a href="#">Track Order</a><a href="#">Shipping Policy</a><a href="#">Returns</a><a href="#">FAQ</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#">About Us</a><a href="#">Contact</a><a href="#">Instagram</a><a href="#">TikTok</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

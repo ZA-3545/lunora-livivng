@@ -1,0 +1,414 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--hero-gap);
+  align-items: center;
+  padding: var(--hero-pad);
+}
+
+.hero-tag {
+  font-size: 12px;
+  color: var(--rose);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+.hero p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-top: 14px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.hero-art {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-media);
+  position: relative;
+  overflow: hidden;
+}
+
+.lifestyle-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+
+.lifestyle-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lifestyle-photo figcaption {
+  margin: 0;
+}
+
+.photo-credit {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  background: rgba(250, 247, 241, 0.86);
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 3px 7px;
+  border-radius: var(--radius-tight);
+}
+
+.photo-credit:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.placeholder-media {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.lifestyle-linked {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-media);
+  overflow: hidden;
+}
+
+.mood-card {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-media);
+  display: block;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-size: 16px;
+}
+
+.lifestyle-linked .mood-card {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.lifestyle-linked .photo-credit {
+  top: 8px;
+  bottom: auto;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.mood-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.mood-photo .photo-credit {
+  top: 8px;
+  bottom: auto;
+}
+
+.mood-label {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1;
+  background: rgba(250, 247, 241, 0.75);
+  padding: 6px 10px;
+  border-radius: var(--radius-tight);
+}
+
+.bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.bundle-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-media);
+  overflow: hidden;
+}
+
+.bundle-img {
+  aspect-ratio: 5 / 4;
+}
+
+.bundle-body {
+  padding: 16px;
+}
+
+.bundle-body h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.bundle-body p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+
+.price-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.was {
+  color: var(--ink-soft);
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
+.now {
+  color: var(--rose);
+  font-weight: 600;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.p-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-media);
+  padding: 12px;
+}
+
+.p-img {
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.p-card h4 {
+  font-size: 13.5px;
+  margin: 0 0 4px;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.p-card .now {
+  font-size: 13px;
+}
+
+.inspo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.inspo-main {
+  aspect-ratio: 16 / 11;
+  border-radius: var(--radius-media);
+}
+
+.inspo-sub {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  min-height: 280px;
+}
+
+.inspo-a,
+.inspo-b {
+  border-radius: var(--radius-media);
+  min-height: 132px;
+}
+
+.review-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.review {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-media);
+  padding: 20px;
+}
+
+.review p {
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.review .who {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.news {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-panel);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.news h2 {
+  color: var(--bg);
+  font-size: 24px;
+  max-width: 360px;
+}
+
+.news p {
+  color: #c9bfb0;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.news form {
+  display: flex;
+  width: 100%;
+  max-width: 340px;
+}
+
+.news input {
+  flex: 1;
+  border: none;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  border-radius: var(--radius-tight) 0 0 var(--radius-tight);
+  background: var(--card);
+  color: var(--ink);
+  min-width: 0;
+}
+
+.news input::placeholder {
+  color: var(--ink-soft);
+}
+
+.news button {
+  background: var(--rose);
+  color: var(--ink);
+  border: none;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  border-radius: 0 var(--radius-tight) var(--radius-tight) 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.news-thanks {
+  color: var(--bg);
+  font-size: 14px;
+}
+
+@media (min-width: 801px) {
+  .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .hero-tag {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    line-height: 1.08;
+    max-width: 520px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    max-width: 420px;
+    margin-top: 18px;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .mood-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .mood-card {
+    font-size: 18px;
+  }
+
+  .bundle-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .bundle-body {
+    padding: 18px;
+  }
+
+  .bundle-body h3 {
+    font-size: 17px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .inspo {
+    grid-template-columns: 1.3fr 1fr;
+  }
+
+  .inspo-sub {
+    min-height: 0;
+  }
+
+  .review-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .news {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 48px;
+  }
+
+  .news h2 {
+    font-size: 26px;
+  }
+
+  .news form {
+    flex: 0 0 340px;
+    width: auto;
+  }
+}

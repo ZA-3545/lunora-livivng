@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lunora-living-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lunora-living
+  template:
+    metadata:
+      labels:
+        app: lunora-living
+    spec:
+      containers:
+      - name: lunora-living
+        image: lunora-living:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        env:
+        - name: HOSTNAME
+          value: "0.0.0.0"
+        - name: DATABASE_URL
+          value: "postgresql://lunora:lunora@host.docker.internal:5433/lunora"
+        - name: ADMIN_PASSWORD
+          value: "lunora-admin-dev"
+        - name: APP_URL
+          value: "http://localhost:3000"
+        - name: ONLINE_PAYMENT_HOLD_MINUTES
+          value: "25"
+        - name: LEOPARDS_SIMULATE
+          value: "true"
+        - name: SAFEPAY_SIMULATE
+          value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lunora-living-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: lunora-living
+  ports:
+  - port: 3000
+    targetPort: 3000

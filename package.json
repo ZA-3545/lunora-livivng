@@ -1,0 +1,34 @@
+{
+  "name": "lunora-living",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "tsx scripts/ensure-db.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "prestart": "tsx scripts/ensure-db.ts",
+    "start": "next start",
+    "lint": "eslint",
+    "db:up": "docker compose up -d",
+    "db:migrate": "tsx db/migrate.ts",
+    "db:seed": "tsx db/seed.ts",
+    "db:setup": "tsx db/migrate.ts && tsx db/seed.ts",
+    "db:test-oversell": "tsx db/test-oversell.ts"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "pg": "^8.16.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/pg": "^8.15.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tsx": "^4.20.5",
+    "typescript": "^5"
+  }
+}
