@@ -1,17 +1,19 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useCoupon } from "@/components/cart/CouponProvider";
 import { formatPkr } from "@/lib/format";
 
 export function CouponField() {
   const { code, discount, error, status, applyCode, clearCode } = useCoupon();
   const [draft, setDraft] = useState(code);
+  const [prevCode, setPrevCode] = useState(code);
   const [localError, setLocalError] = useState("");
 
-  useEffect(() => {
+  if (code !== prevCode) {
+    setPrevCode(code);
     setDraft(code);
-  }, [code]);
+  }
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

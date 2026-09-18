@@ -4,10 +4,10 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
   useSyncExternalStore,
+  useEffect,
 } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { apiFetch, ApiError } from "@/lib/api/client";
@@ -54,19 +54,15 @@ export function CouponProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<CouponStatus>("idle");
 
   useEffect(() => {
-    if (!code) {
-      setDiscount(0);
-      setError("");
-      setStatus("idle");
-      return;
-    }
+    if (!code) return;
 
     let cancelled = false;
-    setStatus("checking");
-    setDiscount(0);
-    setError("");
 
     async function preview() {
+      setStatus("checking");
+      setDiscount(0);
+      setError("");
+
       try {
         const result = await apiFetch<{ code: string; discount: number }>(
           "/api/coupons/preview",
@@ -105,16 +101,21 @@ export function CouponProvider({ children }: { children: React.ReactNode }) {
     writeCouponCode("");
   }, []);
 
+  // code khali hone par "idle" state ko compute karo, setState se reset karne ke bajaye
+  const displayStatus = code ? status : "idle";
+  const displayDiscount = code ? discount : 0;
+  const displayError = code ? error : "";
+
   const value = useMemo<CouponContextValue>(
     () => ({
       code,
-      discount,
-      error,
-      status,
+      discount: displayDiscount,
+      error: displayError,
+      status: displayStatus,
       applyCode,
       clearCode,
     }),
-    [applyCode, clearCode, code, discount, error, status],
+    [applyCode, clearCode, code, displayDiscount, displayError, displayStatus],
   );
 
   return (
